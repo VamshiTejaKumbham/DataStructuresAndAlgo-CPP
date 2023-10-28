@@ -1,5 +1,28 @@
 #include<iostream>
 using namespace std;
+void BubbleSort(int arr[], int size){
+    for(int i=0;i<size-1;i++){
+        int swapped = 0; 
+        for(int j=0;j<(size-i);j++){
+            if(arr[j]>arr[j+1]){
+                int t = arr[j+1];
+                arr[j+1] = arr[j];
+                arr[j] = t;
+                swapped++;
+            }
+        }
+        if(swapped==0){
+            cout << "Array - Already Sorted!" << endl;
+            break;
+        }
+    }
+}
+void PrintArray(int arr[], int size){
+    for(int i=0;i<size;i++){
+        cout << arr[i] << " "; 
+    }
+    cout << endl;
+}
 int main(){
     int n,i,j;
     cout << "Enter the Size of the array : ";
@@ -10,23 +33,12 @@ int main(){
         cin >> arr[i];
     }
     cout << "Initial array : ";
-    for(i=0;i<n;i++){
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-    for(i=0;i<n;i++){
-        for(j=0;j<(n-i-1);j++){
-            if(arr[j]>arr[j+1]){
-                int t = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = t;
-            }
-        }
-    }
-    cout << "Sorted array : ";
-    for(i=0;i<n;i++){
-        cout << arr[i] << " ";
-    }
+    PrintArray(arr,n);
+    BubbleSort(arr,n);
+
+    cout << "Sorted array: ";
+    PrintArray(arr,n);
+
     return 0;
 }
 
