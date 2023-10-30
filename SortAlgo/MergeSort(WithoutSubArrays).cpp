@@ -3,7 +3,33 @@ using namespace std;
 
 void Merge(int arr[], int left, int mid, int right){
     int i = left, j = mid + 1, k = left;
-    
+    int brr[left+right+1];
+    while(i<=mid && j<=right){
+        if(arr[i]<=arr[j]){
+            brr[k] = arr[i];
+            i++;
+        }
+        else{
+            brr[k] = arr[j];
+            j++;
+        }
+        k++;
+    }
+    while(i<=mid){
+        brr[k]=arr[i];
+        i++;
+        k++;
+    }
+    while(j<=right){
+        brr[k]=arr[j];
+        j++;
+        k++;
+    }
+   
+
+    for(i=left;i<=right;i++){
+        arr[i]=brr[i];
+    }
 
 }
 
@@ -35,7 +61,7 @@ int main(){
     cout << "Initial Array : ";
     PrintArray(arr,n);
 
-    MergeSort(arr,0,n+1);
+    MergeSort(arr,0,n-1);
 
     cout << "Sorted Array : ";
     PrintArray(arr,n);
